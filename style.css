@@ -77,50 +77,87 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 60px;
   background: linear-gradient(135deg, #fffaf3 60%, #f7ede0);
   flex-wrap: wrap;
-  min-height: 100vh; /* Add this line */
+  min-height: 50vh;
+  /* Remove full width hack */
+  width: 100%;
+  position: static;
+  left: unset;
+  right: unset;
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.container .hero {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-text {
   max-width: 500px;
+  flex: 1 1 300px;
 }
 
-.hero h1 {
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
   font-size: 3em;
   color: #7f5f4c;
-  font-family: 'Playfair Display', serif;
+  font-weight: 700;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-.hero p {
-  font-size: 1.1em;
+.hero-text p {
+  font-size: 1.15em;
+  color: #2b2b2b;
   margin-bottom: 25px;
-}
-
-.hero button {
-  padding: 14px 30px;
-  background-color: #7f5f4c;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.hero button:hover {
-  background-color: #c0a375;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .hero img {
-  width: 350px;
-  max-width: 100%;
+  width: 630px;
+  max-width: 48vw;
+  min-width: 220px;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   margin-top: 20px;
   object-fit: cover;
+  flex: 1 1 220px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .container .hero {
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    min-height: 40vh;
+  }
+  .hero img {
+    margin-top: 30px;
+    width: 90vw;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container .hero {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .hero h1 {
+    font-size: 1.3em;
+  }
+  .hero img {
+    width: 100vw;
+    max-width: 300px;
+  }
 }
 
 /* Main Store Page Layout */
@@ -508,6 +545,14 @@ footer a:hover {
   background: #fffaf3;
 }
 
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
   .shop-page {
@@ -533,10 +578,20 @@ footer a:hover {
     margin-left: 15px;
     margin-right: 0;
   }
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   .hero {
     flex-direction: column;
     text-align: center;
-    padding: 40px 10px;
+    min-height: 40vh;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: linear-gradient(135deg, #fffaf3 60%, #f7ede0);
   }
   .hero img {
     margin-top: 30px;
@@ -546,6 +601,10 @@ footer a:hover {
   .collection-items {
     flex-direction: column;
     gap: 20px;
+  }
+  .testimonials,
+  .newsletter {
+    padding: 40px 10px;
   }
 }
 
@@ -560,4 +619,40 @@ footer a:hover {
   footer {
     padding: 25px 10px 10px 10px;
   }
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .hero h1,
+  .collections h2,
+  .testimonials h2,
+  .newsletter h2 {
+    font-size: 1.3em;
+  }
+  .hero img {
+    width: 100vw;
+    max-width: 300px;
+  }
+}
+
+.hero button {
+  padding: 14px 32px;
+  background-color: #7f5f4c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.15em;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(127, 95, 76, 0.10);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hero button:hover {
+  background-color: #c0a375;
+  box-shadow: 0 4px 16px rgba(127, 95, 76, 0.13);
+  transform: translateY(-2px);
 }
